@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre Dentaire - Meilleur Centre dentaire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #0a4d3c;
+            --secondary-green: #0d6652;
+            --light-green: #10856d;
+            --accent-green: #14a37f;
+            --dark-bg: #052e24;
+            --light-bg: #f8faf9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(10, 77, 60, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-green) 50%, var(--secondary-green) 100%);
+            color: white;
+            padding: 10rem 2rem 6rem;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInLeft 1s;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInLeft 1.2s;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-green);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeInLeft 1.4s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .hero-image {
+            animation: fadeInRight 1s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            color: var(--accent-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-text h2 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .about-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(10, 77, 60, 0.3);
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .services-header {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .services-header h3 {
+            color: var(--accent-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .services-header h2 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(10, 77, 60, 0.15);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: grayscale(0.3);
+        }
+
+        .service-card h4 {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .values-header h3 {
+            color: var(--accent-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .values-header h2 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .value-card h4 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .team-header h3 {
+            color: var(--accent-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-header h2 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .team-name {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--accent-green);
+            font-size: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-header h3 {
+            color: var(--accent-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonials-header h2 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+        }
+
+        .testimonial-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .testimonial-track:hover {
+            animation-play-state: paused;
+        }
+
+        .testimonial-card {
+            min-width: 400px;
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-green) 50%, var(--secondary-green) 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary-green);
+            padding: 1rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-green);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .testimonial-card {
+                min-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🦷 Centre Dentaire</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#rdv" class="cta-btn">Réserver un rdv</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Laissez nous illuminer votre sourire</h1>
+                <p>Bienvenue au Centre Dentaire, votre référence en soins dentaires. Situé au cœur de la ville, notre centre est équipé des dernières technologies pour vous offrir des soins de haute qualité dans un cadre moderne et apaisant.</p>
+                <a href="#contact" class="hero-btn">Contactez nous</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop" alt="Soins dentaires">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="apropos">
+        <div class="about-content">
+            <div class="about-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop" alt="Cabinet dentaire">
+            </div>
+            <div class="about-text">
+                <h3>Meilleur Centre dentaire</h3>
+                <h2>Centre Dentaire</h2>
+                <p>Idéalement situé dans un quartier résidentiel facilement accessible. Notre centre dentaire est doté d'installations et d'équipements à la fine pointe de la technologie. Il est l'un des principaux prestataires de soins dentaires complets dans la ville depuis de nombreuses années.</p>
+                <p>Doté d'une équipe hautement qualifiée qui s'engage à fournir le meilleur service et la meilleure qualité possible à ses patients.</p>
+                <a href="#apropos" class="about-btn">À propos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-header">
+            <h3>Nos Services</h3>
+            <h2>Des soins dentaires complets</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🦷</div>
+                <h4>Orthodontie</h4>
+                <p>Alignement des dents et correction des malocclusions avec les dernières technologies</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌱</div>
+                <h4>Soins Gencive</h4>
+                <p>Traitement parodontal pour des gencives saines et un sourire éclatant</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h4>Blanchiment Dentaire</h4>
+                <p>Techniques modernes de blanchiment pour un sourire lumineux</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💎</div>
+                <h4>Facettes Dentaires</h4>
+                <p>Hollywood smile avec facettes en céramique de haute qualité</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h4>Implants Dentaires</h4>
+                <p>Remplacement permanent des dents avec implants de dernière génération</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👑</div>
+                <h4>Prothèse: couronnes, bridges</h4>
+                <p>Solutions prothétiques pour restaurer votre sourire</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-header">
+            <h3>Nos missions</h3>
+            <h2>Nos valeurs</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🏥</div>
+                <h4>Équipement moderne</h4>
+                <p>Le centre est doté d'équipements et de technologies de dernière génération</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">👨‍⚕️</div>
+                <h4>Équipe dentaire</h4>
+                <p>Une équipe de chirurgiens dentistes experts à votre disposition</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📅</div>
+                <h4>Respect des rendez-vous</h4>
+                <p>Bonne gestion des RDV pour éviter les longues heures d'attente</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💚</div>
+                <h4>Traitement Préalable</h4>
+                <p>Large gamme de soins pour l'hygiène et l'esthétique dentaire</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🧼</div>
+                <h4>Respect d'hygiène</h4>
+                <p>Mesures d'asepsie et techniques d'hygiène très rigoureuses</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✅</div>
+                <h4>Résultats Garantis</h4>
+                <p>Des dents plus blanches et un sourire éclatant garantis</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-header">
+            <h3>Nous changeons votre sourire</h3>
+            <h2>Découvrez notre équipe</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">👨‍⚕️</div>
+                <div class="team-info">
+                    <h3 class="team-name">Dr Bentouda Souad</h3>
+                    <p class="team-role">Chirurgien-dentiste</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👩‍⚕️</div>
+                <div class="team-info">
+                    <h3 class="team-name">Dr Fatima Zahra</h3>
+                    <p class="team-role">Dentiste</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👩‍💼</div>
+                <div class="team-info">
+                    <h3 class="team-name">Amina</h3>
+                    <p class="team-role">Secrétaire</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👩‍⚕️</div>
+                <div class="team-info">
+                    <h3 class="team-name">Chaima</h3>
+                    <p class="team-role">Assistante</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-header">
+            <h3>Témoignage</h3>
+            <h2>Ce qu'on dit de nous</h2>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-track">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Combinaison de compétence et douceur, les meilleurs!"</p>
+                    <p class="testimonial-author">Hamoud El</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Très bon service, personnel très compétent et à l'écoute, à recommander"</p>
+                    <p class="testimonial-author">Afaf El</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Parmi les meilleurs dentistes, hautement compétents et dévoués. Je recommande."</p>
+                    <p class="testimonial-author">Sara C</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Un centre très professionnel. Équipe aimable, attentive et attentionnée!"</p>
+                    <p class="testimonial-author">Dalal G</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The best! Excellent travail, merci infiniment."</p>
+                    <p class="testimonial-author">Youssef A</p>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Combinaison de compétence et douceur, les meilleurs!"</p>
+                    <p class="testimonial-author">Hamoud El</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Très bon service, personnel très compétent et à l'écoute, à recommander"</p>
+                    <p class="testimonial-author">Afaf El</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Parmi les meilleurs dentistes, hautement compétents et dévoués. Je recommande."</p>
+                    <p class="testimonial-author">Sara C</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Prêt à transformer votre sourire ?</h2>
+        <p>Prenez rendez-vous dès aujourd'hui pour une consultation personnalisée</p>
+        <a href="#rdv" class="cta-button">Réserver maintenant</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Infos</h3>
+                <p>📧 contact@centredentaire.com</p>
+                <p>📞 +212 528 28 18 18</p>
+                <p>📱 +212 676 28 07 18</p>
+                <p>📍 Technopole 1 Bloc B, Etage 3
